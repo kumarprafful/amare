@@ -1,21 +1,28 @@
 import React, { useEffect } from 'react'
 import { Dimensions, SafeAreaView, StyleSheet, View, Text, Button } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 import Video from 'react-native-video'
 import { AccessToken, LoginManager } from 'react-native-fbsdk'
 import { GoogleSignin } from '@react-native-community/google-signin'
 import { connect } from 'react-redux'
 
-import SocialButton from '../components/SocialButton'
-import Typography from '../components/Typography'
-import { auth } from '../redux/actions'
+import SocialButton from '../../components/SocialButton'
+import Typography from '../../components/Typography'
+import { auth } from '../../redux/actions'
 
-import facebook from '../assets/img/facebook.png'
-import google from '../assets/img/google-logo.png'
+import facebook from '../../assets/img/facebook.png'
+import google from '../../assets/img/google-logo.png'
 
 
 const { height, width } = Dimensions.get('window')
 
-const Login = ({ facebookLogin }) => {
+const Login = ({
+    facebookLogin,
+    googleLogin
+}) => {
+    const navigation = useNavigation()
+    console.log(navigation)
+
     const googleSignInConfigure = () => {
         GoogleSignin.configure({
             scopes: ['email'],
@@ -47,6 +54,12 @@ const Login = ({ facebookLogin }) => {
                 'access_token': data.accessToken
             }
             facebookLogin(body)
+                .then(() => {
+                    console.log('Helo')
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         }
         catch (error) {
             console.log(error)
@@ -59,19 +72,24 @@ const Login = ({ facebookLogin }) => {
             const userInfo = await GoogleSignin.signIn()
             const token = await GoogleSignin.getTokens()
             console.log(userInfo, token)
+            googleLogin(token.accessToken)
+                .then(() => {
+
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         }
         catch (error) {
             console.log(error)
         }
-
-
     }
 
     return (
         <SafeAreaView style={styles.container}>
             <Video
                 style={styles.backgroundVideo}
-                source={require('../assets/img/couple_video.mp4')}
+                source={require('../../assets/img/couple_video.mp4')}
                 muted={true}
                 repeat={true}
                 resizeMode={'cover'}
@@ -80,25 +98,43 @@ const Login = ({ facebookLogin }) => {
             />
             <View style={styles.spaceAround}>
                 <View style={styles.center}>
-                    <Typography style={styles.center} variant="h1">amare</Typography>
-                    <Typography style={styles.center} variant="h4">Meet the one.</Typography>
+                    <Typography
+                        style={styles.center}
+                        variant="h1"
+                        color="#fff"
+                    >
+                        amare
+                    </Typography>
+                    <Typography
+                        style={styles.center}
+                        variant="h4"
+                        color="#fff"
+                    >
+                        Meet the one.
+                    </Typography>
                 </View>
                 <View style={styles.center}>
                     <SocialButton
                         title="Continue with Facebook"
                         backgroundColor="#4867aa"
                         color="#fff"
-                        icon={facebook}
-                        handleLogin={() => handleFacebookLogin()}
+                        icon='facebook'
+                        handleLogin={handleFacebookLogin}
                     />
                     <SocialButton
                         title="Continue with Google"
                         backgroundColor="#fff"
                         color="#000"
-                        icon={google}
-                        handleLogin={() => handleGoogleLogin()}
+                        icon='google'
+                        handleLogin={handleGoogleLogin}
                     />
-                    <Typography variant="h4">Continue with Phone</Typography>
+                    <Typography
+                        variant="h4"
+                        onPress={() => navigation.navigate('Phone')}
+                        color="#fff"
+                    >
+                        Continue with Mobile
+                    </Typography>
                 </View>
             </View>
         </SafeAreaView>
@@ -136,6 +172,7 @@ const mapStateToProps = () => ({
 
 const mapDispatchToProps = (dispatch) => ({
     facebookLogin: (data) => dispatch(auth.facebookLogin(data)),
+    googleLogin: (data) => dispatch(auth.googleLogin(data)),
 
 })
 

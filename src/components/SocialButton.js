@@ -1,19 +1,14 @@
-import React from 'react'
-import {
-    StyleSheet,
-    Text,
-    View,
-    Dimensions,
-    Image
-} from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import React from 'react';
+import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-const { height, width } = Dimensions.get('window')
+const { height, width } = Dimensions.get('window');
 
 const SocialButton = ({ title, icon, backgroundColor, color, handleLogin }) => {
     return (
         <TouchableOpacity
-            activeOpacity={.9}
+            activeOpacity={0.9}
             style={{
                 backgroundColor: backgroundColor ? backgroundColor : '#000',
                 padding: 15,
@@ -24,17 +19,18 @@ const SocialButton = ({ title, icon, backgroundColor, color, handleLogin }) => {
             }}
             onPress={handleLogin}
         >
-            <Image
+            {/* <Image
                 source={icon}
                 style={{
-                    height: 30,
-                    width: 30,
+                    minHeight: 30,
+                    minWidth: 30,
                 }}
-            />
+            /> */}
+            <Icon name={icon} size={20} color={color} />
             <Text
                 style={{
                     color: color ? color : '#fff',
-                    fontSize: 22,
+                    fontSize: 18,
                     textAlign: 'center',
                     width: '90%',
                 }}
@@ -42,10 +38,9 @@ const SocialButton = ({ title, icon, backgroundColor, color, handleLogin }) => {
                 {title}
             </Text>
         </TouchableOpacity>
-    )
-}
+    );
+};
 
-const styles = StyleSheet.create({
-})
+const styles = StyleSheet.create({});
 
-export default SocialButton
+export default SocialButton;

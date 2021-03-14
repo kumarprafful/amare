@@ -1,14 +1,21 @@
-import AsyncStorage from "@react-native-async-storage/async-storage"
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const deviceStorage = {
-    async saveItem(key, value){
-        try{
-            await AsyncStorage.setItem(key, value)
+    async saveItem(key, value) {
+        try {
+            await AsyncStorage.setItem(key, value);
+        } catch (error) {
+            console.log('Async storage error', error.message);
         }
-        catch(error){
-            console.log('Async storage error', error.message)
-        }
-    }
-}
+    },
 
-export default deviceStorage
+    async getItem(key) {
+        try {
+            return await AsyncStorage.getItem(key);
+        } catch (error) {
+            console.log('Not Found');
+        }
+    },
+};
+
+export default deviceStorage;

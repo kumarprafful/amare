@@ -1,15 +1,15 @@
 import React, { useEffect, createRef, useState } from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
-import { TextInputMask } from 'react-native-masked-text';
 import { connect } from 'react-redux';
-import MaskedInput, {
+import {
+    MaskedInput,
     BackButton,
     Button,
     Container,
     Input,
     Wrapper,
 } from '../../components/StyledComponent';
-import Typography from '../../components/Typography';
+import Typography from '../../components/generic/Typography';
 import { auth } from '../../redux/actions';
 
 // eslint-disable-next-line prettier/prettier

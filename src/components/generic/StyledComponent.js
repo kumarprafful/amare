@@ -102,7 +102,7 @@ export const Input = (props) => {
     );
 };
 
-const MaskedInput = React.forwardRef((props, ref) => (
+export const MaskedInput = React.forwardRef((props, ref) => (
     <>
         <TextInputMask
             style={[
@@ -133,7 +133,7 @@ const MaskedInput = React.forwardRef((props, ref) => (
     </>
 ));
 
-export default MaskedInput;
+// export default MaskedInput;
 
 export const PhoneInputField = (props) => {
     return (

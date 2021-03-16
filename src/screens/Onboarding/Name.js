@@ -7,7 +7,7 @@ import {
     Typography,
     Wrapper,
     Button,
-} from '../../components/StyledComponent';
+} from '../../components/generic/StyledComponent';
 import { connect } from 'react-redux';
 import { auth } from '../../redux/actions';
 

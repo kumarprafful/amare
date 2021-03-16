@@ -7,7 +7,7 @@ import {
     Container,
     Typography,
     Wrapper,
-} from '../../components/StyledComponent';
+} from '../../components/generic/StyledComponent';
 import { auth } from '../../redux/actions';
 
 function Gender({ onboardingForm, updateOnboardingForm }) {

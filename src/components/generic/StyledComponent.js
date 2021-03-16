@@ -12,7 +12,7 @@ import PhoneInput from 'react-native-phone-number-input';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styled from 'styled-components/native';
 
-import { MAIN_COLOR } from '../services/constants';
+import { MAIN_COLOR } from '../../services/constants';
 import { TextInputMask } from 'react-native-masked-text';
 // import { TouchableHighlight } from 'react-native-gesture-handler'
 

@@ -8,7 +8,7 @@ import {
     Container,
     Input,
     Wrapper,
-} from '../../components/StyledComponent';
+} from '../../components/generic/StyledComponent';
 import Typography from '../../components/generic/Typography';
 import { auth } from '../../redux/actions';
 

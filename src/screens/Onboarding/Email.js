@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {
@@ -8,10 +10,8 @@ import {
     Container,
     Typography,
     Wrapper,
-} from '../../components/StyledComponent';
+} from '../../components/generic/StyledComponent';
 
-import { useNavigation } from '@react-navigation/native';
-import { connect } from 'react-redux';
 import { auth } from '../../redux/actions';
 
 const Email = ({ updateOnboardingForm }) => {

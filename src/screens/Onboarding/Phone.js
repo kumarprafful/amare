@@ -10,7 +10,7 @@ import {
     Container,
     Typography,
     Wrapper,
-} from '../../components/StyledComponent';
+} from '../../components/generic/StyledComponent';
 
 const Phone = () => {
     const [disabled, setDisabled] = useState(true);

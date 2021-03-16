@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from './src/screens/Onboarding/Login';
-import Email from './src/screens/Onboarding/Email';
-import Phone from './src/screens/Onboarding/Phone';
-import Name from './src/screens/Onboarding/Name';
-import DOB from './src/screens/Onboarding/DOB';
-import Gender from './src/screens/Onboarding/Gender';
+import Login from '../screens/Onboarding/Login';
+import Email from '../screens/Onboarding/Email';
+import Phone from '../screens/Onboarding/Phone';
+import Name from '../screens/Onboarding/Name';
+import DOB from '../screens/Onboarding/DOB';
+import Gender from '../screens/Onboarding/Gender';
 import { createStackNavigator } from '@react-navigation/stack';
 
 function MainNavigation() {
